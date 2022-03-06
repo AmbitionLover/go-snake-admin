@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    // 模块解析策略，现代化项目均为node
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["webpack-env"],
+    // 独立模块
+    // 当typescript与其他编译工具（例如babel）共同使用时，
+    // 由于双方对于模块的解析差异，（babel每次只能处理一个文件，而非如同typescript一样可以统一处理全局的类型系统）
+    // 则部分typescript支持的代码会由于其他编译工具不支持，而最终会导致运行时报错（例如const enum、namespace）
+    // 开启此选项后，TS将在书写此类型语法时给出错误提示
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
