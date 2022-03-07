@@ -38,6 +38,13 @@
 
         <!--begin::Actions-->
         <div class="text-center">
+          <el-input
+            type="text"
+            class="form-control form-control-solid me-3"
+            placeholder="密钥"
+            v-model="targetData.salt"
+          >
+          </el-input>
           <button
             type="reset"
             id="kt_modal_new_target_cancel"
@@ -84,7 +91,8 @@ interface CryptoData {
   plaintext: string;
   ciphertext: string;
   name: string;
-  mode: string;
+  mode?: string;
+  salt?: string;
 }
 
 export default defineComponent({
@@ -93,9 +101,8 @@ export default defineComponent({
 
   props: {
     progress: Number,
-
+    url: String,
     icon: String,
-
     date: String,
   },
   setup(props) {
@@ -114,13 +121,17 @@ export default defineComponent({
       return props.date ? props.date : "Feb 21, 2021";
     });
 
+    const getUrl = computed(() => {
+      return props.url ? props.url : "/tools/crypto/hash";
+    });
+
     const submit = () => {
       if (!formRef.value) {
         return;
       }
 
       loading.value = true;
-      ApiService.post("tools/crypto/hash", targetData as never)
+      ApiService.post(getUrl.value, targetData as never)
         .then(({ data }) => {
           targetData.ciphertext = data.data;
         })
@@ -135,6 +146,7 @@ export default defineComponent({
       formRef,
       loading,
       getDate,
+      getUrl,
       newTargetModalRef,
     };
   },

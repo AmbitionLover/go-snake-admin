@@ -73,6 +73,17 @@
             </router-link>
           </li>
           <!--end::Nav item-->
+          <!--begin::Nav item-->
+          <li class="nav-item">
+            <router-link
+              class="nav-link text-active-primary me-6"
+              to="/crafted/tools/crypto/qys"
+              active-class="active"
+            >
+              qys
+            </router-link>
+          </li>
+          <!--end::Nav item-->
         </ul>
       </div>
       <!--begin::Navs-->

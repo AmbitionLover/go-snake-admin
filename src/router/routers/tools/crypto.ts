@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "crypto-hash",
         component: () => import("@/views/crafted/tools/crypto/CryptoHash.vue"),
       },
+      {
+        path: "qys",
+        name: "crypto-qys",
+        component: () => import("@/views/crafted/tools/crypto/CryptoQys.vue"),
+      },
     ],
   },
 ];

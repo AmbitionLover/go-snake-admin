@@ -37,6 +37,10 @@ const DocMenuConfig = [
                 heading: "cryptoHash",
                 route: "/crafted/tools/crypto/hash",
               },
+              {
+                heading: "cryptoQys",
+                route: "/crafted/tools/crypto/qys",
+              },
             ],
           },
         ],
